@@ -44,9 +44,61 @@ a:active {
     user-select: none;
 }
 
+.btn-advanced{
+    background-color: #4d90fe;
+    border: 1px solid #3079ed;
+    border-radius: 2px;
+    color: #fff;
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    height: 30px;
+    line-height: 100%;
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+.btn-advanced:hover{
+    background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+}
+
 .btn-container {
     display: block;
     text-align: center;
+}
+
+.btn-div{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+    width: 585px;
+}
+
+.form-advanced{
+    margin: 50px;
+}
+
+.h1-advanced{
+    color: #d93025;
+    font-weight:lighter;
+    font-size: 20px;
+    margin: 25px 35px;
+}
+
+.h2-advanced{
+    color: #333333;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+hr{
+    background-color: #EBEBEB;
+    height: 1px;
+}
+
+.form-control{
+    width: 385px;
 }
 
 .input-form{
@@ -64,9 +116,15 @@ a:active {
     word-wrap: break-word;
 }
 
+.left{
+    font-size: 13px;
+    width: 200px;
+}
+
 .logo {
     display: flex;
     justify-content: center;
+    margin-top: 4.5%;
 }
 
 .navbarList{
@@ -78,4 +136,16 @@ a:active {
 .navbarList-item {
     margin-right: 18px;
     margin-top: 24px;
+}
+
+.right{
+    width: 385px;
+}
+
+.row-input{
+    display: flex;
+    color: #3c4043;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
 }
