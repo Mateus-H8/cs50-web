@@ -8,7 +8,26 @@ from .models import User, Category, Listing
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    activeListings = Listing.objects.filter(isActive=True)
+    allCategories = Category.objects.all()
+    return render(request, "auctions/index.html", {
+        "listings": activeListings,
+        "categories": allCategories,
+    })
+
+def listing(request, id):
+    return render(request, "auctions/listing.html")
+
+def dispayCategory(request):
+    if request.method == "POST":
+        categoryFromForm = request.POST['category']
+        category = Category.objects.get(categoryName=categoryFromForm)
+        activeListings = Listing.objects.filter(isActive=True, category=category)
+        allCategories = Category.objects.all()
+        return render(request, "auctions/index.html", {
+            "listings": activeListings,
+            "categories": allCategories,
+        })
 
 def createListing(request):
     if request.method == "GET":
