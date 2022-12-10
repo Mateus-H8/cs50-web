@@ -16,7 +16,18 @@ def index(request):
     })
 
 def listing(request, id):
-    return render(request, "auctions/listing.html")
+    listingData = Listing.objects.get(category=id)
+    isListingInWatchlist = True
+    return render(request, "auctions/listing.html", {
+        "listing": listingData,
+        "isListingInWatchlist": isListingInWatchlist
+    })
+
+def removeWatchlist(request, id):
+    return
+
+def addWatchlist(request, id):
+    return
 
 def dispayCategory(request):
     if request.method == "POST":
