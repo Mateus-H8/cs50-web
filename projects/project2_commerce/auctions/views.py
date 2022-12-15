@@ -16,18 +16,31 @@ def index(request):
     })
 
 def listing(request, id):
-    listingData = Listing.objects.get(category=id)
-    isListingInWatchlist = True
+    listingData = Listing.objects.get(pk=id)
+    isListingInWatchlist = request.user in listingData.watchlist.all()
     return render(request, "auctions/listing.html", {
         "listing": listingData,
         "isListingInWatchlist": isListingInWatchlist
     })
 
+def displayWatchList(request):
+    currentUser = request.user
+    listings = currentUser.listingWatchlist.all()
+    return render(request, "auctions/watchlist.html", {
+        "listings": listings
+    })
+
 def removeWatchlist(request, id):
-    return
+    listingData = Listing.objects.get(pk=id)
+    currentUser = request.user
+    listingData.watchlist.remove(currentUser)
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 def addWatchlist(request, id):
-    return
+    listingData = Listing.objects.get(pk=id)
+    currentUser = request.user
+    listingData.watchlist.add(currentUser)
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 def dispayCategory(request):
     if request.method == "POST":
